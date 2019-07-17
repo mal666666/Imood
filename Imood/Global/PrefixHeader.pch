@@ -1,0 +1,26 @@
+//
+//  PrefixHeader.pch
+//  manbu305
+//
+//  Created by XBORONG on 15/2/12.
+//  Copyright (c) 2015年 manbu. All rights reserved.
+//
+
+#import "AppDelegate.h"
+#import "PSystemMacro.h"
+#import <Masonry/Masonry.h>
+#import "SDAutoLayout.h"
+
+
+#define SCR_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCR_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#define MyAppDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
+#define RGBACOLOR(RED, GREEN, BLUE, ALPHA)	[UIColor colorWithRed:RED green:GREEN blue:BLUE alpha:ALPHA]
+#define iPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? YES : NO)
+
+
+
+
+
