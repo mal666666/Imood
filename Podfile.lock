@@ -14,14 +14,19 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - cocore (1.2.0)
+  - cocore (1.2.6)
   - coobjc (1.2.0):
     - cocore (~> 1.2.0)
   - GPUImage (0.1.7)
   - Masonry (1.1.0)
   - ReactiveObjC (3.1.1)
   - SDAutoLayout (2.2.1)
+  - SDWebImage (5.8.0):
+    - SDWebImage/Core (= 5.8.0)
+  - SDWebImage/Core (5.8.0)
   - Toast (4.0.0)
+  - ZLPhotoBrowser (3.1.4):
+    - SDWebImage
 
 DEPENDENCIES:
   - AFNetworking
@@ -31,9 +36,10 @@ DEPENDENCIES:
   - ReactiveObjC
   - SDAutoLayout
   - Toast
+  - ZLPhotoBrowser
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - AFNetworking
     - cocore
     - coobjc
@@ -41,18 +47,22 @@ SPEC REPOS:
     - Masonry
     - ReactiveObjC
     - SDAutoLayout
+    - SDWebImage
     - Toast
+    - ZLPhotoBrowser
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  cocore: cc9d76229458f286a632d9cecb63bd699bd3529d
+  cocore: d6abaa4dd8c15115290362b9accbb42cc2bce9a0
   coobjc: 090a460e32e90d0e820e64c31cf7b79dece51a7c
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDAutoLayout: 8bf6b3bbc8b01f775d4defbb4fda2ace805461be
+  SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+  ZLPhotoBrowser: 638189d99c51f78013c9a0369e385db4a4b9673f
 
-PODFILE CHECKSUM: c3e6ec4479915b66573da6e047d6a7e4e34facf8
+PODFILE CHECKSUM: 63b47b7a1e198797b1f75f06088ee450dc20f2c4
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.9.1

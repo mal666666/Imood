@@ -12,8 +12,10 @@
 #import <AVKit/AVKit.h>
 #import <Toast.h>
 #import <ReactiveObjC.h>
+#import "PlayerContentView.h"
+#import <ZLPhotoBrowser/ZLPhotoBrowser.h>
 
-@interface ViewController ()< AVAudioPlayerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate, ELCImagePickerControllerDelegate,FeSlideFilterViewDataSource, FeSlideFilterViewDelegate,UIAlertViewDelegate,UIScrollViewDelegate>
+@interface ViewController ()< AVAudioPlayerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate,FeSlideFilterViewDataSource, FeSlideFilterViewDelegate,UIAlertViewDelegate,UIScrollViewDelegate>
 
 @property(strong, nonatomic)UIImagePickerController *picker;
 @property(strong, nonatomic)NSData *imageData;
@@ -29,7 +31,7 @@
 @property(strong, nonatomic)NSURL *mixMusicURL;//混合后音频路径
 @property(strong, nonatomic)NSURL *videoPath;//混合后视频路径
 @property(strong, nonatomic)NSURL *theEndVideoURL;//最终视频路径
-@property(strong, nonatomic)MPMoviePlayerController *movieplay;//视频播放器
+@property(strong, nonatomic)PlayerContentView *movieplay;//视频播放器
 @property(strong, nonatomic)UISlider *slider;//调节播放时间
 @property(strong, nonatomic)UIButton *compositionPlay;//最终合成播放
 //滤镜
@@ -52,7 +54,7 @@
     [super viewDidLoad];
     self.edgesForExtendedLayout =UIRectEdgeNone;
     self.navigationController.navigationBar.translucent =YES;
-    self.title =@"创歌";
+    //self.title =@"创歌";
     //显示照片
     self.m_pCameraImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, kStatusBarH, SCR_WIDTH, SCR_WIDTH)];
     if (IS_4INCH_DEVICE || iPadAir ||iPad2) {
@@ -149,27 +151,25 @@
         [self.view makeToast:@"请加载图片" duration:1 position:nil];
         return;
     }
-    if (self.movieplay.playbackState  == MPMoviePlaybackStatePlaying) {
-        [self.movieplay pause];
+    if (self.movieplay.playerLayer.player.timeControlStatus  == AVPlayerTimeControlStatusPlaying) {
+        [self.movieplay.playerLayer.player pause];
         [self.compositionPlay setImage:[UIImage imageNamed:@"play_btn"]  forState:UIControlStateNormal];
     }
-    else if((self.movieplay.playbackState == MPMoviePlaybackStatePaused) ){
-        [self.movieplay play];
+    else if((self.movieplay.playerLayer.player.timeControlStatus == AVPlayerTimeControlStatusWaitingToPlayAtSpecifiedRate) ){
+        [self.movieplay.playerLayer.player play];
         [self.compositionPlay setImage:nil forState:UIControlStateNormal];
     }else{
-        [self.movieplay.view removeFromSuperview];
-        self.movieplay = [[MPMoviePlayerController alloc]initWithContentURL:self.theEndVideoURL];
-        [self.movieplay.view setFrame:self.m_pCameraImage.frame];
+        [self.movieplay removeFromSuperview];
+        self.movieplay = [[PlayerContentView alloc]init];
+        [self.movieplay playWithUrl:self.theEndVideoURL];
+        [self.movieplay setFrame:self.m_pCameraImage.frame];
         if (IS_4INCH_DEVICE || iPadAir ||iPad2) {
-            [self.movieplay.view setFrame:CGRectMake(0, kStatusBarH, SCR_WIDTH, SCR_WIDTH/1.5)];
+            [self.movieplay setFrame:CGRectMake(0, kStatusBarH, SCR_WIDTH, SCR_WIDTH/1.5)];
         }
-        [self.view addSubview:self.movieplay.view];
-        self.movieplay.controlStyle =MPMovieControlStyleNone;
-        [self.movieplay prepareToPlay];
-        [self.movieplay play];
-        self.compositionPlay.frame =self.movieplay.view.frame;
+        [self.view addSubview:self.movieplay];
+        self.compositionPlay.frame =self.movieplay.frame;
         [self.compositionPlay setImage:nil forState:UIControlStateNormal];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerPlaybackDidFinish) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
+        //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayerPlaybackDidFinish) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
     }
     [self.view bringSubviewToFront:self.compositionPlay];
 }
@@ -182,7 +182,7 @@
     self.imgArray =[NSMutableArray arrayWithCapacity:0];
     self.imgArray =[self.originalImageArray mutableCopy];//把原始图片给self.imgArray
     
-    if ([self.imgArray count] &&self.movieplay.playbackState == MPMoviePlaybackStateStopped) {
+    if ([self.imgArray count] &&self.movieplay.playerLayer.player.timeControlStatus == AVPlayerTimeControlStatusPaused) {
         if (indexFilter>=1&&indexFilter<=4) {
             for (NSInteger i=0; i <self.imgArray.count; i++) {
                 //给所有图片上滤镜
@@ -371,85 +371,57 @@
      }];
 }
 - (void)selectForAlbumButtonClick:(UIButton *)sender{
-    //从相册选照片
-    [self.movieplay stop];
-    //选中照片标记
-//    [scroll removeFromSuperview];
-//    [selectedLabel removeFromSuperview];
-//    selectedLabel =[[UILabel alloc]initWithFrame:CGRectMake(3, SCR_WIDTH/5+1.5, SCR_WIDTH/5-6, 3)];
-//    selectedLabel.backgroundColor =[UIColor redColor];
-//    [scroll addSubview:selectedLabel];
-    //
-    ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
-    elcPicker.maximumImagesCount = 9;
-    elcPicker.returnsOriginalImage = NO;
-    elcPicker.returnsImage = YES;
-    elcPicker.onOrder = YES;
-    elcPicker.mediaTypes = @[(NSString *)kUTTypeImage, (NSString *)kUTTypeMovie];
-    elcPicker.imagePickerDelegate = self;
-    [self presentViewController:elcPicker animated:YES completion:nil];
-}
-- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    NSMutableArray *images = [NSMutableArray arrayWithCapacity:[info count]];
-    for (NSDictionary *dict in info) {
-        if ([dict objectForKey:UIImagePickerControllerMediaType] == ALAssetTypePhoto){
-            if ([dict objectForKey:UIImagePickerControllerOriginalImage]){
-                UIImage* image=[dict objectForKey:UIImagePickerControllerOriginalImage];
-                if (image.size.height>=image.size.width) {
-                    CGRect rect =  CGRectMake(0, (image.size.height -image.size.width)/2, image.size.width, image.size.width);
-                    CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, rect);
-                    UIImage *thumbScale = [UIImage imageWithCGImage:imageRef];
-                    thumbScale =[self imageWithImageSimple:thumbScale scaledToSize:CGSizeMake(320*4, 320*4)];
-                    [images addObject:thumbScale];
-                    CGImageRelease(imageRef);
-                    NSLog(@"剪切后正方形照片%@",thumbScale);
-                }else{
-                    CGRect rect =  CGRectMake((image.size.width -image.size.height)/2, 0, image.size.height, image.size.height);
-                    CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, rect);
-                    UIImage *thumbScale = [UIImage imageWithCGImage:imageRef];
-                    thumbScale =[self imageWithImageSimple:thumbScale scaledToSize:CGSizeMake(320*4, 320*4)];
-                    [images addObject:thumbScale];
-                    CGImageRelease(imageRef);
-                    NSLog(@"剪切后正方形照片%@",thumbScale);
-                }
-            } else {
-                NSLog(@"UIImagePickerControllerReferenceURL = %@", dict);
+    [self.movieplay.playerLayer.player pause];
+    ZLPhotoActionSheet *ac = [[ZLPhotoActionSheet alloc] init];
+    ac.configuration.maxSelectCount = 9;
+    ac.configuration.maxPreviewCount = 10;
+    ac.sender = self;
+    [ac setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
+        NSMutableArray *clipImages = [NSMutableArray arrayWithCapacity:[images count]];
+        for (UIImage *image in images) {
+            if (image.size.height>=image.size.width) {
+                CGRect rect =  CGRectMake(0, (image.size.height -image.size.width)/2, image.size.width, image.size.width);
+                CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, rect);
+                UIImage *thumbScale = [UIImage imageWithCGImage:imageRef];
+                thumbScale =[self imageWithImageSimple:thumbScale scaledToSize:CGSizeMake(320*4, 320*4)];
+                [clipImages addObject:thumbScale];
+                CGImageRelease(imageRef);
+                NSLog(@"剪切后正方形照片%@",thumbScale);
+            }else{
+                CGRect rect =  CGRectMake((image.size.width -image.size.height)/2, 0, image.size.height, image.size.height);
+                CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, rect);
+                UIImage *thumbScale = [UIImage imageWithCGImage:imageRef];
+                thumbScale =[self imageWithImageSimple:thumbScale scaledToSize:CGSizeMake(320*4, 320*4)];
+                [clipImages addObject:thumbScale];
+                CGImageRelease(imageRef);
+                NSLog(@"剪切后正方形照片%@",thumbScale);
             }
-        } else if ([dict objectForKey:UIImagePickerControllerMediaType] == ALAssetTypeVideo){
-            if ([dict objectForKey:UIImagePickerControllerOriginalImage]){
-                UIImage* image=[dict objectForKey:UIImagePickerControllerOriginalImage];
-                [images addObject:image];
-            } else {
-                NSLog(@"UIImagePickerControllerReferenceURL = %@", dict);
+        }
+        [self.originalImageArray removeAllObjects];
+        self.originalImageArray =[NSMutableArray arrayWithCapacity:0];
+        self.originalImageArray = clipImages;
+        if (self.originalImageArray.count>0) {
+            for (int i=0; i<self.originalImageArray.count; i++) {
+                UIButton *photoBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+                [photoBtn setBackgroundImage:self.originalImageArray[i] forState:UIControlStateNormal];
+                photoBtn.frame =CGRectMake(i *SCR_WIDTH/5+3, 6, SCR_WIDTH/5-6, SCR_WIDTH/5-6);
+                photoBtn.tag =i;
+                [photoBtn addTarget:self action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
+                [self->scroll addSubview:photoBtn];
             }
-        } else {
-            NSLog(@"Uknown asset type");
+            self.albumBtn.frame =CGRectMake(self.originalImageArray.count *SCR_WIDTH/5+3, 6, SCR_WIDTH/5-6, SCR_WIDTH/5-6);
         }
-    }
-    [self.originalImageArray removeAllObjects];
-    self.originalImageArray =[NSMutableArray arrayWithCapacity:0];
-    self.originalImageArray = images;
-    if (self.originalImageArray.count>0) {
-        for (int i=0; i<self.originalImageArray.count; i++) {
-            UIButton *photoBtn =[UIButton buttonWithType:UIButtonTypeCustom];
-            [photoBtn setBackgroundImage:self.originalImageArray[i] forState:UIControlStateNormal];
-            photoBtn.frame =CGRectMake(i *SCR_WIDTH/5+3, 6, SCR_WIDTH/5-6, SCR_WIDTH/5-6);
-            photoBtn.tag =i;
-            [photoBtn addTarget:self action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
-            [scroll addSubview:photoBtn];
-        }
-        self.albumBtn.frame =CGRectMake(self.originalImageArray.count *SCR_WIDTH/5+3, 6, SCR_WIDTH/5-6, SCR_WIDTH/5-6);
-    }
-    self.movieplay.view.hidden =YES;
-    [self.view addSubview:self.compositionPlay];
+        self.movieplay.hidden =YES;
+        [self.view addSubview:self.compositionPlay];
+    }];
+    [ac showPreviewAnimated:YES];
 }
 -(void)selectImage:(UIButton *)btn{
     btnIndex =btn.tag;
     NSLog(@"点击了第___%ld___张图片",(long)btnIndex);
-    [self.movieplay stop];
-    [self.movieplay.view removeFromSuperview];
-    self.movieplay.view.hidden =YES;
+    [self.movieplay.playerLayer.player pause];
+    [self.movieplay removeFromSuperview];
+    self.movieplay.hidden =YES;
     //self.m_pCameraImage.image =self.imgArray[btn.tag];
     //改变红线坐标
     [UIView beginAnimations:nil context:nil];
@@ -479,27 +451,26 @@
     UIGraphicsEndImageContext();
     return newImage;
 }
-- (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
 - (void)customMusic{
-    UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@"提示" message:@"请选择音乐风格" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"流行",@"金属",@"思念",@"电子",nil];
-    [alert show];
-}
--(void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex{
-    if (buttonIndex !=0) {
-        CompViewController *composer= [[CompViewController alloc]init];
-        composer.musicType =buttonIndex;
-        [self presentViewController:composer animated:YES completion:nil];
-        [self.myPlay stop];
-        [self.movieplay stop];
-        
-//        ComposerViewController *composer =[[ComposerViewController alloc]init];
-//        [self presentViewController:composer animated:YES completion:nil];
-//        [self.myPlay stop];
-//        [self.movieplay stop];
+    UIAlertController *ac =[UIAlertController alertControllerWithTitle:@"提示" message:@"请选择音乐风格" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [ac addAction:cancelAction];
+    NSArray *arr =@[@"流行",@"金属",@"思念",@"电子"];
+    for (int i=0; i<4; i++) {
+        UIAlertAction *action = [UIAlertAction actionWithTitle:arr[i] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            CompViewController *composer= [[CompViewController alloc]init];
+            composer.musicType =i+1;
+            composer.modalPresentationStyle =UIModalPresentationFullScreen;
+            [self presentViewController:composer animated:YES completion:nil];
+            [self.myPlay stop];
+            [self.movieplay.playerLayer.player pause];
+        }];
+        [ac addAction:action];
     }
+    [self presentViewController:ac animated:YES completion:nil];
 }
+
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -592,4 +563,5 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
 @end

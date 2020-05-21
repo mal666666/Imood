@@ -9,4 +9,5 @@ target 'Imood' do
     pod 'Toast'
     pod 'coobjc'
     pod 'ReactiveObjC'
+    pod 'ZLPhotoBrowser'
 end

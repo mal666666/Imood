@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ComposerViewController.h"
-#import <MediaPlayer/MediaPlayer.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "ELCImagePickerHeader.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "FeSlideFilterView.h"
 #import "CIFilter+LUT.h"

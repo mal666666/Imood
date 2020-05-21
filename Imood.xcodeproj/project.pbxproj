@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F1D930C2476706700C0C3E7 /* PlayerContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1D930B2476706700C0C3E7 /* PlayerContentView.m */; };
 		2F92C22021D61AB800F8A911 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F92C21F21D61AB800F8A911 /* AppDelegate.m */; };
 		2F92C22621D61AB800F8A911 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F92C22421D61AB800F8A911 /* Main.storyboard */; };
 		2F92C22821D61ABA00F8A911 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F92C22721D61ABA00F8A911 /* Assets.xcassets */; };
@@ -17,18 +18,6 @@
 		2F92C23F21D61CA200F8A911 /* CompViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F92C23C21D61CA100F8A911 /* CompViewController.m */; };
 		2F92C24221D61CC600F8A911 /* GridButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F92C24121D61CC600F8A911 /* GridButton.m */; };
 		2F92C24621D61D0000F8A911 /* UIImage+ImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F92C24421D61D0000F8A911 /* UIImage+ImageSize.m */; };
-		2F92C25F21D61D2A00F8A911 /* ELCAssetTablePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F92C24821D61D2A00F8A911 /* ELCAssetTablePicker.m */; };
-		2F92C26021D61D2A00F8A911 /* ELCOverlayImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F92C24921D61D2A00F8A911 /* ELCOverlayImageView.m */; };
-		2F92C26121D61D2A00F8A911 /* ELCImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F92C24A21D61D2A00F8A911 /* ELCImagePickerController.m */; };
-		2F92C26221D61D2A00F8A911 /* ELCAlbumPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F92C25221D61D2A00F8A911 /* ELCAlbumPickerController.xib */; };
-		2F92C26321D61D2A00F8A911 /* ELCAssetPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F92C25321D61D2A00F8A911 /* ELCAssetPicker.xib */; };
-		2F92C26421D61D2A00F8A911 /* Overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F92C25421D61D2A00F8A911 /* Overlay.png */; };
-		2F92C26521D61D2A00F8A911 /* ELCAssetTablePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F92C25521D61D2A00F8A911 /* ELCAssetTablePicker.xib */; };
-		2F92C26621D61D2A00F8A911 /* Overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F92C25621D61D2A00F8A911 /* Overlay@2x.png */; };
-		2F92C26721D61D2A00F8A911 /* ELCAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F92C25A21D61D2A00F8A911 /* ELCAssetCell.m */; };
-		2F92C26821D61D2A00F8A911 /* ELCConsole.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F92C25C21D61D2A00F8A911 /* ELCConsole.m */; };
-		2F92C26921D61D2A00F8A911 /* ELCAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F92C25D21D61D2A00F8A911 /* ELCAsset.m */; };
-		2F92C26A21D61D2A00F8A911 /* ELCAlbumPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F92C25E21D61D2A00F8A911 /* ELCAlbumPickerController.m */; };
 		2F92C41221D61F4C00F8A911 /* JS-节奏吉他1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F92C3D421D61F4C00F8A911 /* JS-节奏吉他1.mp3 */; };
 		2F92C41321D61F4C00F8A911 /* JS-节奏吉他2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F92C3D521D61F4C00F8A911 /* JS-节奏吉他2.mp3 */; };
 		2F92C41421D61F4C00F8A911 /* JS-节奏吉他3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F92C3D621D61F4C00F8A911 /* JS-节奏吉他3.mp3 */; };
@@ -161,6 +150,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F1D930A2476706700C0C3E7 /* PlayerContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerContentView.h; sourceTree = "<group>"; };
+		2F1D930B2476706700C0C3E7 /* PlayerContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerContentView.m; sourceTree = "<group>"; };
 		2F92C21B21D61AB800F8A911 /* Imood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Imood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F92C21E21D61AB800F8A911 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2F92C21F21D61AB800F8A911 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -178,28 +169,6 @@
 		2F92C24121D61CC600F8A911 /* GridButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridButton.m; sourceTree = "<group>"; };
 		2F92C24421D61D0000F8A911 /* UIImage+ImageSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageSize.m"; sourceTree = "<group>"; };
 		2F92C24521D61D0000F8A911 /* UIImage+ImageSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageSize.h"; sourceTree = "<group>"; };
-		2F92C24821D61D2A00F8A911 /* ELCAssetTablePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAssetTablePicker.m; sourceTree = "<group>"; };
-		2F92C24921D61D2A00F8A911 /* ELCOverlayImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCOverlayImageView.m; sourceTree = "<group>"; };
-		2F92C24A21D61D2A00F8A911 /* ELCImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCImagePickerController.m; sourceTree = "<group>"; };
-		2F92C24B21D61D2A00F8A911 /* ELCConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCConsole.h; sourceTree = "<group>"; };
-		2F92C24C21D61D2A00F8A911 /* ELCAssetPickerFilterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetPickerFilterDelegate.h; sourceTree = "<group>"; };
-		2F92C24D21D61D2A00F8A911 /* ELCImagePickerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerHeader.h; sourceTree = "<group>"; };
-		2F92C24E21D61D2A00F8A911 /* ELCAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetCell.h; sourceTree = "<group>"; };
-		2F92C24F21D61D2A00F8A911 /* ELCAlbumPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAlbumPickerController.h; sourceTree = "<group>"; };
-		2F92C25021D61D2A00F8A911 /* ELCAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAsset.h; sourceTree = "<group>"; };
-		2F92C25221D61D2A00F8A911 /* ELCAlbumPickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAlbumPickerController.xib; sourceTree = "<group>"; };
-		2F92C25321D61D2A00F8A911 /* ELCAssetPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAssetPicker.xib; sourceTree = "<group>"; };
-		2F92C25421D61D2A00F8A911 /* Overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Overlay.png; sourceTree = "<group>"; };
-		2F92C25521D61D2A00F8A911 /* ELCAssetTablePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCAssetTablePicker.xib; sourceTree = "<group>"; };
-		2F92C25621D61D2A00F8A911 /* Overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Overlay@2x.png"; sourceTree = "<group>"; };
-		2F92C25721D61D2A00F8A911 /* ELCImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerController.h; sourceTree = "<group>"; };
-		2F92C25821D61D2A00F8A911 /* ELCOverlayImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCOverlayImageView.h; sourceTree = "<group>"; };
-		2F92C25921D61D2A00F8A911 /* ELCAssetTablePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetTablePicker.h; sourceTree = "<group>"; };
-		2F92C25A21D61D2A00F8A911 /* ELCAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAssetCell.m; sourceTree = "<group>"; };
-		2F92C25B21D61D2A00F8A911 /* ELCAssetSelectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetSelectionDelegate.h; sourceTree = "<group>"; };
-		2F92C25C21D61D2A00F8A911 /* ELCConsole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCConsole.m; sourceTree = "<group>"; };
-		2F92C25D21D61D2A00F8A911 /* ELCAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAsset.m; sourceTree = "<group>"; };
-		2F92C25E21D61D2A00F8A911 /* ELCAlbumPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAlbumPickerController.m; sourceTree = "<group>"; };
 		2F92C3D421D61F4C00F8A911 /* JS-节奏吉他1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "JS-节奏吉他1.mp3"; sourceTree = "<group>"; };
 		2F92C3D521D61F4C00F8A911 /* JS-节奏吉他2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "JS-节奏吉他2.mp3"; sourceTree = "<group>"; };
 		2F92C3D621D61F4C00F8A911 /* JS-节奏吉他3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "JS-节奏吉他3.mp3"; sourceTree = "<group>"; };
@@ -391,6 +360,8 @@
 			children = (
 				2F92C24021D61CC600F8A911 /* GridButton.h */,
 				2F92C24121D61CC600F8A911 /* GridButton.m */,
+				2F1D930A2476706700C0C3E7 /* PlayerContentView.h */,
+				2F1D930B2476706700C0C3E7 /* PlayerContentView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -398,7 +369,6 @@
 		2F92C23821D61C7F00F8A911 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				2F92C24721D61D2A00F8A911 /* ELCImagePicker */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -423,43 +393,6 @@
 				2F92C24421D61D0000F8A911 /* UIImage+ImageSize.m */,
 			);
 			path = Category;
-			sourceTree = "<group>";
-		};
-		2F92C24721D61D2A00F8A911 /* ELCImagePicker */ = {
-			isa = PBXGroup;
-			children = (
-				2F92C24821D61D2A00F8A911 /* ELCAssetTablePicker.m */,
-				2F92C24921D61D2A00F8A911 /* ELCOverlayImageView.m */,
-				2F92C24A21D61D2A00F8A911 /* ELCImagePickerController.m */,
-				2F92C24B21D61D2A00F8A911 /* ELCConsole.h */,
-				2F92C24C21D61D2A00F8A911 /* ELCAssetPickerFilterDelegate.h */,
-				2F92C24D21D61D2A00F8A911 /* ELCImagePickerHeader.h */,
-				2F92C24E21D61D2A00F8A911 /* ELCAssetCell.h */,
-				2F92C24F21D61D2A00F8A911 /* ELCAlbumPickerController.h */,
-				2F92C25021D61D2A00F8A911 /* ELCAsset.h */,
-				2F92C25121D61D2A00F8A911 /* Resources */,
-				2F92C25721D61D2A00F8A911 /* ELCImagePickerController.h */,
-				2F92C25821D61D2A00F8A911 /* ELCOverlayImageView.h */,
-				2F92C25921D61D2A00F8A911 /* ELCAssetTablePicker.h */,
-				2F92C25A21D61D2A00F8A911 /* ELCAssetCell.m */,
-				2F92C25B21D61D2A00F8A911 /* ELCAssetSelectionDelegate.h */,
-				2F92C25C21D61D2A00F8A911 /* ELCConsole.m */,
-				2F92C25D21D61D2A00F8A911 /* ELCAsset.m */,
-				2F92C25E21D61D2A00F8A911 /* ELCAlbumPickerController.m */,
-			);
-			path = ELCImagePicker;
-			sourceTree = "<group>";
-		};
-		2F92C25121D61D2A00F8A911 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				2F92C25221D61D2A00F8A911 /* ELCAlbumPickerController.xib */,
-				2F92C25321D61D2A00F8A911 /* ELCAssetPicker.xib */,
-				2F92C25421D61D2A00F8A911 /* Overlay.png */,
-				2F92C25521D61D2A00F8A911 /* ELCAssetTablePicker.xib */,
-				2F92C25621D61D2A00F8A911 /* Overlay@2x.png */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		2F92C3D221D61F1B00F8A911 /* Resouce */ = {
@@ -778,8 +711,6 @@
 				2F92C43721D61F4C00F8A911 /* LX-节奏吉他1.mp3 in Resources */,
 				2FD8D94D22C5BD3E004A2F9C /* Info1.plist in Resources */,
 				2F92C42821D61F4C00F8A911 /* LX-主音吉他2.mp3 in Resources */,
-				2F92C26421D61D2A00F8A911 /* Overlay.png in Resources */,
-				2F92C26221D61D2A00F8A911 /* ELCAlbumPickerController.xib in Resources */,
 				2F92C4BD21D61F5700F8A911 /* SN-鼓3.mp3 in Resources */,
 				2F92C4B621D61F5700F8A911 /* SN-键盘2.mp3 in Resources */,
 				2F92C44C21D61F4C00F8A911 /* DZ-DJ5.mp3 in Resources */,
@@ -828,8 +759,6 @@
 				2F92C4BE21D61F5700F8A911 /* SN-鼓1.mp3 in Resources */,
 				2F92C4A521D61F5700F8A911 /* jita_down.png in Resources */,
 				2F92C4BB21D61F5700F8A911 /* SN-吉他2.mp3 in Resources */,
-				2F92C26521D61D2A00F8A911 /* ELCAssetTablePicker.xib in Resources */,
-				2F92C26621D61D2A00F8A911 /* Overlay@2x.png in Resources */,
 				2F92C43521D61F4C00F8A911 /* LX-节奏吉他4.mp3 in Resources */,
 				2F92C41E21D61F4C00F8A911 /* JS-主音吉他3.mp3 in Resources */,
 				2F92C43121D61F4C00F8A911 /* LX-鼓4.mp3 in Resources */,
@@ -864,7 +793,6 @@
 				2F92C4A021D61F5700F8A911 /* record_animate_08.png in Resources */,
 				2F92C44821D61F4C00F8A911 /* DZ-DJ3.mp3 in Resources */,
 				2F92C42F21D61F4C00F8A911 /* LX-贝斯1.mp3 in Resources */,
-				2F92C26321D61D2A00F8A911 /* ELCAssetPicker.xib in Resources */,
 				2F92C4BC21D61F5700F8A911 /* SN-鼓2.mp3 in Resources */,
 				2F92C4B021D61F5700F8A911 /* SN-贝斯4.mp3 in Resources */,
 				2F92C41221D61F4C00F8A911 /* JS-节奏吉他1.mp3 in Resources */,
@@ -946,21 +874,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F92C26921D61D2A00F8A911 /* ELCAsset.m in Sources */,
 				2F92C23621D61BF400F8A911 /* ViewController.m in Sources */,
 				2F92C22E21D61ABA00F8A911 /* main.m in Sources */,
-				2F92C26821D61D2A00F8A911 /* ELCConsole.m in Sources */,
-				2F92C26121D61D2A00F8A911 /* ELCImagePickerController.m in Sources */,
-				2F92C25F21D61D2A00F8A911 /* ELCAssetTablePicker.m in Sources */,
 				2F92C23E21D61CA200F8A911 /* ComposerViewController.m in Sources */,
 				2F92C24621D61D0000F8A911 /* UIImage+ImageSize.m in Sources */,
 				2F92C4C821D61F9500F8A911 /* CIFilter+LUT.m in Sources */,
-				2F92C26A21D61D2A00F8A911 /* ELCAlbumPickerController.m in Sources */,
-				2F92C26721D61D2A00F8A911 /* ELCAssetCell.m in Sources */,
 				2F92C4CB21D61FA500F8A911 /* FeSlideFilterView.m in Sources */,
 				2F92C24221D61CC600F8A911 /* GridButton.m in Sources */,
 				2F92C23F21D61CA200F8A911 /* CompViewController.m in Sources */,
-				2F92C26021D61D2A00F8A911 /* ELCOverlayImageView.m in Sources */,
+				2F1D930C2476706700C0C3E7 /* PlayerContentView.m in Sources */,
 				2F92C22021D61AB800F8A911 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1038,7 +960,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1091,7 +1013,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1113,7 +1035,7 @@
 				);
 				GCC_PREFIX_HEADER = Imood/Global/PrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/Imood/SupportFiles/Info1.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1146,7 +1068,7 @@
 				);
 				GCC_PREFIX_HEADER = Imood/Global/PrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/Imood/SupportFiles/Info1.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
