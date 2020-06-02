@@ -7,6 +7,7 @@
 //
 
 #import "CompViewController.h"
+#import <Toast.h>
 
 @interface CompViewController (){
     UIButton *select_music_btn;//音乐选择
@@ -220,8 +221,7 @@
 -(void)selectorMusicElement:(UIButton*)btn{
     NSLog(@"音乐元素%ld",(long)btn.tag);
     if ([btn.titleLabel.text isEqual:@"1"]||[btn.titleLabel.text isEqual:@"2"]||[btn.titleLabel.text isEqual:@"3"]||[btn.titleLabel.text isEqual:@"4"]||[btn.titleLabel.text isEqual:@"5"]) {
-        UIAlertView *alert =[[UIAlertView alloc]initWithTitle:@" 提示" message:@"请选择乐器" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alert show];
+        [self.view makeToast:@"请选择乐器"];
     }else{
         [music_mix_arr replaceObjectAtIndex:music_index withObject:btn.titleLabel.text];
         for (int i=0; i<music_mix_arr.count; i++) {

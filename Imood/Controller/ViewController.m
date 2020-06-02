@@ -13,7 +13,8 @@
 #import <Toast.h>
 #import <ReactiveObjC.h>
 #import "PlayerContentView.h"
-//#import <ZLPhotoBrowser/ZLPhotoBrowser.h>
+//#import <MWPhotoBrowser/MWPhotoBrowser.h>
+#import <ZLPhotoBrowser/ZLPhotoBrowser.h>
 
 @interface ViewController ()< AVAudioPlayerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIGestureRecognizerDelegate,FeSlideFilterViewDataSource, FeSlideFilterViewDelegate,UIAlertViewDelegate,UIScrollViewDelegate>
 
@@ -372,49 +373,49 @@
 }
 - (void)selectForAlbumButtonClick:(UIButton *)sender{
     [self.movieplay.playerLayer.player pause];
-//    ZLPhotoActionSheet *ac = [[ZLPhotoActionSheet alloc] init];
-//    ac.configuration.maxSelectCount = 9;
-//    ac.configuration.maxPreviewCount = 10;
-//    ac.sender = self;
-//    [ac setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
-//        NSMutableArray *clipImages = [NSMutableArray arrayWithCapacity:[images count]];
-//        for (UIImage *image in images) {
-//            if (image.size.height>=image.size.width) {
-//                CGRect rect =  CGRectMake(0, (image.size.height -image.size.width)/2, image.size.width, image.size.width);
-//                CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, rect);
-//                UIImage *thumbScale = [UIImage imageWithCGImage:imageRef];
-//                thumbScale =[self imageWithImageSimple:thumbScale scaledToSize:CGSizeMake(320*4, 320*4)];
-//                [clipImages addObject:thumbScale];
-//                CGImageRelease(imageRef);
-//                NSLog(@"剪切后正方形照片%@",thumbScale);
-//            }else{
-//                CGRect rect =  CGRectMake((image.size.width -image.size.height)/2, 0, image.size.height, image.size.height);
-//                CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, rect);
-//                UIImage *thumbScale = [UIImage imageWithCGImage:imageRef];
-//                thumbScale =[self imageWithImageSimple:thumbScale scaledToSize:CGSizeMake(320*4, 320*4)];
-//                [clipImages addObject:thumbScale];
-//                CGImageRelease(imageRef);
-//                NSLog(@"剪切后正方形照片%@",thumbScale);
-//            }
-//        }
-//        [self.originalImageArray removeAllObjects];
-//        self.originalImageArray =[NSMutableArray arrayWithCapacity:0];
-//        self.originalImageArray = clipImages;
-//        if (self.originalImageArray.count>0) {
-//            for (int i=0; i<self.originalImageArray.count; i++) {
-//                UIButton *photoBtn =[UIButton buttonWithType:UIButtonTypeCustom];
-//                [photoBtn setBackgroundImage:self.originalImageArray[i] forState:UIControlStateNormal];
-//                photoBtn.frame =CGRectMake(i *SCR_WIDTH/5+3, 6, SCR_WIDTH/5-6, SCR_WIDTH/5-6);
-//                photoBtn.tag =i;
-//                [photoBtn addTarget:self action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
-//                [self->scroll addSubview:photoBtn];
-//            }
-//            self.albumBtn.frame =CGRectMake(self.originalImageArray.count *SCR_WIDTH/5+3, 6, SCR_WIDTH/5-6, SCR_WIDTH/5-6);
-//        }
-//        self.movieplay.hidden =YES;
-//        [self.view addSubview:self.compositionPlay];
-//    }];
-//    [ac showPreviewAnimated:YES];
+    ZLPhotoActionSheet *ac = [[ZLPhotoActionSheet alloc] init];
+    ac.configuration.maxSelectCount = 9;
+    ac.configuration.maxPreviewCount = 10;
+    ac.sender = self;
+    [ac setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
+        NSMutableArray *clipImages = [NSMutableArray arrayWithCapacity:[images count]];
+        for (UIImage *image in images) {
+            if (image.size.height>=image.size.width) {
+                CGRect rect =  CGRectMake(0, (image.size.height -image.size.width)/2, image.size.width, image.size.width);
+                CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, rect);
+                UIImage *thumbScale = [UIImage imageWithCGImage:imageRef];
+                thumbScale =[self imageWithImageSimple:thumbScale scaledToSize:CGSizeMake(320*4, 320*4)];
+                [clipImages addObject:thumbScale];
+                CGImageRelease(imageRef);
+                NSLog(@"剪切后正方形照片%@",thumbScale);
+            }else{
+                CGRect rect =  CGRectMake((image.size.width -image.size.height)/2, 0, image.size.height, image.size.height);
+                CGImageRef imageRef = CGImageCreateWithImageInRect(image.CGImage, rect);
+                UIImage *thumbScale = [UIImage imageWithCGImage:imageRef];
+                thumbScale =[self imageWithImageSimple:thumbScale scaledToSize:CGSizeMake(320*4, 320*4)];
+                [clipImages addObject:thumbScale];
+                CGImageRelease(imageRef);
+                NSLog(@"剪切后正方形照片%@",thumbScale);
+            }
+        }
+        [self.originalImageArray removeAllObjects];
+        self.originalImageArray =[NSMutableArray arrayWithCapacity:0];
+        self.originalImageArray = clipImages;
+        if (self.originalImageArray.count>0) {
+            for (int i=0; i<self.originalImageArray.count; i++) {
+                UIButton *photoBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+                [photoBtn setBackgroundImage:self.originalImageArray[i] forState:UIControlStateNormal];
+                photoBtn.frame =CGRectMake(i *SCR_WIDTH/5+3, 6, SCR_WIDTH/5-6, SCR_WIDTH/5-6);
+                photoBtn.tag =i;
+                [photoBtn addTarget:self action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
+                [self->scroll addSubview:photoBtn];
+            }
+            self.albumBtn.frame =CGRectMake(self.originalImageArray.count *SCR_WIDTH/5+3, 6, SCR_WIDTH/5-6, SCR_WIDTH/5-6);
+        }
+        self.movieplay.hidden =YES;
+        [self.view addSubview:self.compositionPlay];
+    }];
+    [ac showPreviewAnimated:YES];
 }
 -(void)selectImage:(UIButton *)btn{
     btnIndex =btn.tag;

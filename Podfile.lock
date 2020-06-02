@@ -17,56 +17,49 @@ PODS:
   - cocore (1.2.6)
   - coobjc (1.2.0):
     - cocore (~> 1.2.0)
-  - DACircularProgress (2.3.1)
   - GPUImage (0.1.7)
   - Masonry (1.1.0)
-  - MBProgressHUD (0.9.2)
-  - MWPhotoBrowser (2.1.2):
-    - DACircularProgress (~> 2.3)
-    - MBProgressHUD (~> 0.9)
-    - "SDWebImage (!= 3.7.2, ~> 3.7)"
   - ReactiveObjC (3.1.1)
-  - SDWebImage (3.8.3):
-    - SDWebImage/Core (= 3.8.3)
-  - SDWebImage/Core (3.8.3)
+  - SDWebImage (5.6.0):
+    - SDWebImage/Core (= 5.6.0)
+  - SDWebImage/Core (5.6.0)
   - Toast (4.0.0)
+  - ZLPhotoBrowser (3.1.2):
+    - SDWebImage
 
 DEPENDENCIES:
   - AFNetworking
   - coobjc
   - GPUImage
   - Masonry
-  - MWPhotoBrowser
   - ReactiveObjC
+  - SDWebImage (= 5.6.0)
   - Toast
+  - ZLPhotoBrowser
 
 SPEC REPOS:
   trunk:
     - AFNetworking
     - cocore
     - coobjc
-    - DACircularProgress
     - GPUImage
     - Masonry
-    - MBProgressHUD
-    - MWPhotoBrowser
     - ReactiveObjC
     - SDWebImage
     - Toast
+    - ZLPhotoBrowser
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   cocore: d6abaa4dd8c15115290362b9accbb42cc2bce9a0
   coobjc: 090a460e32e90d0e820e64c31cf7b79dece51a7c
-  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  SDWebImage: a72e880a8fe0f7fc31efe15aaed443c074d2a80c
+  SDWebImage: 21b19f56b4226cdfe3aefe4e6848dc43ed129a86
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+  ZLPhotoBrowser: 7e88434918366af98f8ebbaf5b94206985812ed6
 
-PODFILE CHECKSUM: d6fc3221f3adf3b2fa91de5ee87d39dcd4268a85
+PODFILE CHECKSUM: a3cc91f1b5a8e087bc5bfa8e520f6b9baae2e898
 
-COCOAPODS: 1.9.2
+COCOAPODS: 1.9.3

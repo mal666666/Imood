@@ -1,12 +1,10 @@
 ${PODS_ROOT}/Target Support Files/Pods-Imood/Pods-Imood-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
-${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework
 ${BUILT_PRODUCTS_DIR}/GPUImage/GPUImage.framework
-${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework
-${BUILT_PRODUCTS_DIR}/MWPhotoBrowser/MWPhotoBrowser.framework
 ${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework
 ${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
 ${BUILT_PRODUCTS_DIR}/Toast/Toast.framework
+${BUILT_PRODUCTS_DIR}/ZLPhotoBrowser/ZLPhotoBrowser.framework
 ${BUILT_PRODUCTS_DIR}/cocore/cocore.framework
 ${BUILT_PRODUCTS_DIR}/coobjc/coobjc.framework

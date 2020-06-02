@@ -8,7 +8,8 @@ target 'Imood' do
     pod 'Toast'
     pod 'coobjc'
     pod 'ReactiveObjC'
-#    pod 'ZLPhotoBrowser'
-    pod 'MWPhotoBrowser'
+    pod 'SDWebImage', '5.6.0'
+    pod 'ZLPhotoBrowser'
+#    pod 'MWPhotoBrowser'
 #    pod 'YBImageBrowser'
 end
